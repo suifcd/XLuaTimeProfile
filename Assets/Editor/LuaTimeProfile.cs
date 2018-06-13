@@ -453,11 +453,11 @@ public class LuaTimeProfileWin : EditorWindow
             item.Function = fields[0].Replace("|", "").Trim();
             item.Source = fields[1].Trim();
             item.Total = float.Parse(fields[2].Trim());
-            item.Average = float.Parse(fields[3].Trim());
+            item.Average = float.Parse(fields[3].Replace("%","").Trim());
             item.Relative = fields[4].Trim();
             item.Called = int.Parse(fields[5].Replace("|", "").Trim());
 
-            if (item.Source.Contains("Frame/XLua/profiler"))
+            if (item.Source.Contains("perf/profiler"))
                 continue;
 
             //Debug.Log(line);
