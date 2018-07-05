@@ -447,7 +447,15 @@ public class LuaTimeProfileWin : EditorWindow
             if (string.IsNullOrEmpty(line))
                 continue;
 
-            string[] fields = line.Split(new string[] { " : " }, StringSplitOptions.None);
+            //string[] fields = line.Split(new string[] { " : " }, StringSplitOptions.None);
+            string[] fields = new string[6];
+            fields[0] = line.Substring(0, 41);
+            fields[1] = line.Substring(43, 50);
+            fields[2] = line.Substring(95, 12);
+            fields[3] = line.Substring(109, 12);
+            fields[4] = line.Substring(123, 12);
+            fields[5] = line.Substring(137, 12);
+
             LuaTimeProfileItem item = new LuaTimeProfileItem();
             item.RawText = line;
             item.Function = fields[0].Replace("|", "").Trim();
